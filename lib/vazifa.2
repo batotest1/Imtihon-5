@@ -1,0 +1,164 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(home: FamousPeopleApp()));
+}
+
+class FamousPeopleApp extends StatefulWidget {
+  @override
+  _FamousPeopleAppState createState() => _FamousPeopleAppState();
+}
+
+class _FamousPeopleAppState extends State<FamousPeopleApp> {
+  TextEditingController _controller = TextEditingController();
+  String resultText = "Bu yerda natija chiqadi";
+
+  void findPerson(String name) {
+    setState(() {
+      name = name.toLowerCase(); // Kiritilgan matnni kichik harflarga o'tkazamiz
+
+      if (name == "elon musk") {
+        resultText = "Elon Musk: Tesla va SpaceX asoschisi, top 1";
+      } else if (name == "jeff bezos") {
+        resultText = "Jeff Bezos: Amazon asoschisi, top 2";
+      } else if (name == "bill gates") {
+        resultText = "Bill Gates: Microsoft asoschisi, top 3";
+      } else if (name == "mark zuckerberg") {
+        resultText = "Mark Zuckerberg: Facebook asoschisi, top 4";
+      } else if (name == "warren buffett") {
+        resultText = "Warren Buffett: Muvaffaqiyatli investor, top 5";
+      } else if (name == "larry page") {
+        resultText = "Larry Page: Google asoschisi, top 6";
+      } else if (name == "sergey brin") {
+        resultText = "Sergey Brin: Google asoschisi, top 7";
+      } else if (name == "steve jobs") {
+        resultText = "Steve Jobs: Apple asoschisi, top 8";
+      } else if (name == "barack obama") {
+        resultText = "Barack Obama: AQSh sobiq prezidenti, top 9";
+      } else if (name == "donald trump") {
+        resultText = "Donald Trump: AQSh sobiq prezidenti, top 10";
+      } else if (name == "vladimir putin") {
+        resultText = "Vladimir Putin: Rossiya prezidenti, top 11";
+      } else if (name == "kim kardashian") {
+        resultText = "Kim Kardashian: Televizion yulduz, top 12";
+      } else if (name == "kanye west") {
+        resultText = "Kanye West: Musiqachi va dizayner, top 13";
+      } else if (name == "taylor swift") {
+        resultText = "Taylor Swift: Qo'shiqchi va yulduz, top 14";
+      } else if (name == "lebron james") {
+        resultText = "LeBron James: Basketbol yulduzi, top 15";
+      } else if (name == "cristiano ronaldo") {
+        resultText = "Cristiano Ronaldo: Futbol yulduzi, top 16";
+      } else if (name == "lionel messi") {
+        resultText = "Lionel Messi: Futbol yulduzi, top 17";
+      } else if (name == "oprah winfrey") {
+        resultText = "Oprah Winfrey: Televizion yulduz, top 18";
+      } else if (name == "muhammad ali") {
+        resultText = "Muhammad Ali: Boks afsonasi, top 19";
+      } else if (name == "michael jackson") {
+        resultText = "Michael Jackson: Pop musiqasi qiroli, top 20";
+      } else {
+        resultText = "Bu inson top 20 ro'yxatda emas yoki noto'g'ri kiritilgan.";
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Dunyodagi Taniqli Insonlar',
+          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+        ),
+        backgroundColor: Colors.blueAccent,
+        centerTitle: true,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Eng taniqli insonni toping!',
+                style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.blueAccent),
+              ),
+              SizedBox(height: 20),
+              TextField(
+                controller: _controller,
+                decoration: InputDecoration(
+                  labelText: 'Inson ismini kiriting',
+                  labelStyle: TextStyle(fontSize: 18),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  prefixIcon: Icon(Icons.search),
+                ),
+                onChanged: (value) {
+                  findPerson(value);
+                },
+              ),
+              SizedBox(height: 20),
+              Container(
+                width: double.infinity,
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade100,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.blue.withOpacity(0.2),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Text(
+                  resultText,
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.blueGrey.shade900,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              SizedBox(height: 40),
+              Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.blueAccent, Colors.lightBlueAccent],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Text(
+                  'Dunyodagi eng taniqli 20 ta inson haqida bilib oling. '
+                  'Har qanday ismingizni kiriting va natijani ko\'ring!',
+                  style: TextStyle(
+                      fontSize: 18, color: Colors.white, fontWeight: FontWeight.w600),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
