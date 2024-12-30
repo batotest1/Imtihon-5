@@ -12,11 +12,12 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:yanabitta/animate.dart';
 
 import 'package:yanabitta/main.dart';
+import 'package:yanabitta/namozvaqt.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(HomeScreen());
+    await tester.pumpWidget(PrayerTimeScreen());
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

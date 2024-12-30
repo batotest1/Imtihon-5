@@ -4,6 +4,15 @@ allprojects {
         mavenCentral()
     }
 }
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    plugins {
+        id 'org.jetbrains.kotlin.android' version '1.9.0'  // Yangi versiya
+    }
+}
 
 rootProject.buildDir = "../build"
 subprojects {
